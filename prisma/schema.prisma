@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../restaurant.db"
+}
+
+model Item {
+  id Int @id @default(autoincrement())
+  price Float
+  name String
+  type String
+  options OptionsOnItems[]
+}
+
+model Options {
+  id Int @id @default(autoincrement())
+  list Option[]
+  upgrades Upgrade[]
+  items OptionsOnItems[]
+}
+
+model Option {
+  id Int @id @default(autoincrement())
+  name String
+  options Options @relation(fields: [optionId], references: [id])
+  optionId Int
+}
+
+model Upgrade {
+  id Int @id @default(autoincrement())
+  name String
+  price Float
+  options Options @relation(fields: [upgradeId], references: [id])
+  upgradeId Int
+}
+
+model OptionsOnItems {
+  list Options @relation(fields: [listId], references: [id])
+  listId Int
+  item Item @relation(fields: [itemId], references: [id])
+  itemId Int
+
+  @@id([listId, itemId])
+}

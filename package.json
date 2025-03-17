@@ -1,0 +1,26 @@
+{
+  "name": "restaurant-api",
+  "version": "1.0.0",
+  "description": "A GraphQL API for a restaurant",
+  "license": "ISC",
+  "author": "Krystal Gleason",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "prisma migrate dev && tsc",
+    "create": "prisma migrate dev --name init && npx tsx init.ts",
+    "start": "node ./dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "graphql": "^16.10.0",
+    "graphql-http": "^1.22.4",
+    "@prisma/client": "^6.2.1",
+    "ruru": "^2.0.0-beta.19"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "prisma": "^6.2.1",
+    "typescript": "^5.7.3"
+  }
+}
