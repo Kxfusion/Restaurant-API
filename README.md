@@ -6,6 +6,8 @@ Steps for running locally:
   npm run dev
 ```
 
+Then navigate to http://localhost:3131
+
 This set of commands installs packages, builds and populates a sqlite db, builds the typescript, and runs the API
 
 Notable next steps:
